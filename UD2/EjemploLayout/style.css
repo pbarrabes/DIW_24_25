@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    display:grid;
+    grid-template-columns: 1fr 15vw;
+    grid-template-rows: 100px 4fr 1fr;
+    grid-template-areas:    "header header" 
+                            "main aside" 
+                            "footer footer";
+}
+
+main {
+    grid-area: main;
+    padding: 1em;
+    display:flex;
+    flex-direction: column;
+    &  div.contenido {
+        display: flex;
+        flex-direction: row;
+    }
+    & h2 {
+        text-align: center;
+    }
+    & img {
+        width: 25%;
+        height:max-content;
+        display: inline;
+    }
+}
+header {
+    grid-area: header;
+    background-color: #817f7f;
+    color: white;
+    text-align: center;
+    padding: 1em;
+    & li{
+        display: inline;
+        margin: 0 0.2em;
+        & a {
+            color: white;
+            text-decoration: none;
+        }
+    }
+    & label,input {
+        display: none;
+    }
+}
+aside {
+    grid-area: aside;
+    background-color: #bdbbbb;
+    color: white;
+    padding: 1em;
+    & li{
+        list-style: none;
+        margin: 1em 0;
+        & a {
+            color: white;
+            text-decoration: none;
+        }
+    }
+    
+}
+footer {
+    grid-area: footer;
+    background-color: #817f7f;
+    color: white;
+    text-align: center;
+    padding: 1em;
+}
+
+@media  (max-width: 768px) {
+    body {
+        font-size: 0.7em;
+        grid-template-columns: 1fr 10px;
+        grid-template-rows: 80px 1fr 80px;
+        grid-template-areas: "header" "main" "aside" "footer";
+    }
+    nav::selection {
+        background-color: transparent;
+    }
+    
+    header  {
+        display:flex;
+        flex-direction:row;
+        gap:5%;
+        align-items: center;
+        & label {
+            display: block;
+        }
+        ul {
+            display: none;
+        }
+        & h1 {
+            font-size: 1.5em;
+        }
+
+        
+
+        input:checked ~ ul {
+            display: block;
+            position: absolute;
+            top: 60px;
+            z-index: 2;
+            background-color: rgb(179, 174, 168);
+            & li {
+                display: block;
+                text-align: center;
+                padding: 1em;
+            }
+            /* para que no se seleccione el texto y quede raro el menu */
+            
+        }
+    }
+}
